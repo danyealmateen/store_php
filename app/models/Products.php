@@ -1,9 +1,9 @@
 <?php
 class Products
 {
-    private $name;
-    private $price;
-    private $stock;
+    private string $name;
+    private int $price;
+    private int $stock;
 
     public function __construct($name, $price, $stock)
     {
