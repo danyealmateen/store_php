@@ -8,20 +8,18 @@
 </head>
 
 <body>
-    <h4>Products</h4>
-    <?php
-    foreach ($products as $product) {
-        echo 'Produkt:' . $product->getName() . '<br>';
-        echo 'Pris:' .  $product->getPrice() . '<br>';
-        echo 'Lager:' .  $product->getStock() . '<br>';
-        echo '<input type="submit" value="Lägg till i kundvagn">';
-        echo '<br>';
-        echo '<hr>';
-        echo '<form action="addToCart.php" method="post"';
-        echo '<input type="hidden" name="product_id" value="' . $product->getId() . '">';
-        echo '</form>';
-    }
-    ?>
+    <?php foreach ($products as $product) : ?>
+        <div>
+            <p>Produkt: <?php echo htmlspecialchars($product->getName()); ?></p>
+            <p>Pris: <?php echo htmlspecialchars($product->getPrice()); ?></p>
+            <p>Lager: <?php echo htmlspecialchars($product->getStock()); ?></p>
+            <form action="addToCart.php" method="post">
+                <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($product->getId()); ?>">
+                <input type="submit" value="Lägg till i kundvagnen">
+            </form>
+        </div>
+        <hr>
+    <?php endforeach; ?>
 </body>
 
 </html>

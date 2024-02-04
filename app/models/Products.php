@@ -9,7 +9,7 @@ class Products
     private int $stock;
     private int $id;
 
-    public function __construct($name, $price, $stock, $id)
+    public function __construct(string $name, float $price, int $stock, int $id)
     {
         $this->name = $name;
         $this->price = $price;
@@ -35,9 +35,10 @@ class Products
     public function lowerStock()
     {
         if ($this->stock > 0) {
-            return --$this->stock;
+            --$this->stock;
+            return true;
         } else {
-            echo 'Out of stock';
+            return false;
         }
     }
 }
