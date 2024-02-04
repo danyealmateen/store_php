@@ -11,10 +11,15 @@
     <h4>Products</h4>
     <?php
     foreach ($products as $product) {
-        echo 'Produkt: ' . $product->getName() . '<br>';
+        echo 'Produkt:' . $product->getName() . '<br>';
         echo 'Pris:' .  $product->getPrice() . '<br>';
         echo 'Lager:' .  $product->getStock() . '<br>';
+        echo '<input type="submit" value="Lägg till i kundvagn">';
+        echo '<br>';
         echo '<hr>';
+        echo '<form action="addToCart.php" method="post"';
+        echo '<input type="hidden" name="product_id" value="' . $product->getId() . '">';
+        echo '</form>';
     }
     ?>
 </body>
