@@ -8,10 +8,13 @@
 </head>
 
 <body>
-    <h1>Products</h1>
+    <h4>Products</h4>
     <?php
     foreach ($products as $product) {
-        echo $product->getName() . '<br>';
+        echo 'Produkt: ' . $product->getName() . '<br>';
+        echo 'Pris:' .  $product->getPrice() . '<br>';
+        echo 'Lager:' .  $product->getStock() . '<br>';
+        echo '<hr>';
     }
     ?>
 </body>

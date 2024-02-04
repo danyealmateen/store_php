@@ -23,4 +23,12 @@ class Products
     {
         return $this->stock;
     }
+    public function lowerStock()
+    {
+        if ($this->stock > 0) {
+            return --$this->stock;
+        } else {
+            echo 'Out of stock';
+        }
+    }
 }
