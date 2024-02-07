@@ -1,13 +1,21 @@
 <?php
-require_once 'db.php';
-require_once 'Products.php';
+
+namespace App\Models;
+use App\Database;
 
 class ProductModel
 {
-    private $dbConnection;
+    private $db;
 
     public function __construct()
     {
-        $this->dbConnection = (new Database())->connect();
+        $this->db = (new Database())->connect();
+    }
+
+    public function getAllProducts()
+    {
+        $query = "SELECT * FROM products";
+        $result = mysqli_query($this->db, $query);
+        var_dump($result);
     }
 }
