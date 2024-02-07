@@ -19,3 +19,12 @@ class Database
         return $connection;
     }
 }
+
+$db = new Database();
+$connection = $db->connect();
+
+if ($connection->ping()) {
+    echo "Anslutningen är aktiv.";
+} else {
+    echo "Anslutningen har stängts av.";
+}

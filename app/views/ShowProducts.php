@@ -8,17 +8,17 @@
 </head>
 
 <body>
-    <?php foreach ($products as $product) : ?>
-        <div>
-            <p>Produkt: <?php echo htmlspecialchars($product->getName()); ?></p>
-            <p>Pris: <?php echo htmlspecialchars($product->getPrice()); ?></p>
-            <form action="addToCart.php" method="post">
-                <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($product->getId()); ?>">
-                <input type="submit" value="Lägg till i kundvagnen">
-            </form>
-        </div>
-        <hr>
-    <?php endforeach; ?>
+    <?php if (isset($products) && is_array($products)) : ?>
+        <?php foreach ($products as $product) : ?>
+            <div>
+                <h2><?php echo htmlspecialchars($product->getName()); ?></h2>
+                <p>Price: <?php echo htmlspecialchars($product->getPrice()); ?> kr</p>
+                <p>Stock: <?php echo htmlspecialchars($product->getStock()); ?></p>
+            </div>
+        <?php endforeach; ?>
+    <?php else : ?>
+        <p>Inga produkter att visa.</p>
+    <?php endif; ?>
 </body>
 
 </html>
