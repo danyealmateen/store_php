@@ -1,21 +1,28 @@
 <?php
 
 namespace App\Models;
-use App\Database;
+
+use mysqli;
 
 class ProductModel
 {
     private $db;
 
-    public function __construct()
+    public function __construct(mysqli $db)
     {
-        $this->db = (new Database())->connect();
+        $this->db = $db;
     }
 
     public function getAllProducts()
     {
         $query = "SELECT * FROM products";
-        $result = mysqli_query($this->db, $query);
-        var_dump($result);
+        $result = $this->db->$query($query);
+        $products = [];
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $product = new Products($row['name'], $row['price'], $row['stock'], $row['id']);
+            $products[] = $product;
+        }
+        return $products;
     }
 }

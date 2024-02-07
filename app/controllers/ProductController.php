@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\models\ProductModel;
+use App\Database;
 
 class ProductController
 {
@@ -10,11 +11,12 @@ class ProductController
 
     public function __construct()
     {
-        $this->model = new ProductModel();
+        $database = new Database();
+        $this->model = new ProductModel($database->connect());
     }
     public function showProducts()
     {
-        // $productModel = new ProductModel();
         $products = $this->model->getAllProducts();
+        include 'views/ShowProducts.php';
     }
 }
