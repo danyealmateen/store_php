@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 class Database
 {
@@ -9,22 +9,29 @@ class Database
     private $pass = '';
     private $dbname = 'store_products';
 
-    public function connect()
+    private $connection;
+
+    public function __construct()
     {
-        $connection = new \mysqli($this->host, $this->user, $this->pass, $this->dbname);
+        // Skapar en anslutning
+        $this->connection = new \mysqli($this->host, $this->user, $this->pass, $this->dbname);
 
-        if ($connection->connect_error) {
-            die("Connection failed: " . $connection->connect_error);
+        // Kontrollerar anslutningen
+        if ($this->connection->connect_error) {
+            die("Anslutningsfel: " . $this->connection->connect_error);
+        } else {
+            echo 'Ansluten till databasen!';
         }
-        return $connection;
     }
-}
 
-$db = new Database();
-$connection = $db->connect();
+    public function getConnection()
+    {
+        return $this->connection;
+    }
 
-if ($connection->ping()) {
-    echo "Anslutningen är aktiv.";
-} else {
-    echo "Anslutningen har stängts av.";
+    // Glöm inte att stänga anslutningen när den inte längre behövs
+    public function closeConnection()
+    {
+        $this->connection->close();
+    }
 }
