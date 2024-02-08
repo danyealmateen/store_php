@@ -8,17 +8,19 @@
 </head>
 
 <body>
-    <?php if (isset($products) && is_array($products)) : ?>
-        <?php foreach ($products as $product) : ?>
+    <h1></h1>
+    <?php if (isset($products) && !empty($products)) {
+        foreach ($products as $product) { ?>
             <div>
-                <h2><?php echo htmlspecialchars($product->getName()); ?></h2>
-                <p>Price: <?php echo htmlspecialchars($product->getPrice()); ?> kr</p>
-                <p>Stock: <?php echo htmlspecialchars($product->getStock()); ?></p>
+                <h2><?php echo htmlspecialchars($product['name']); ?></h2>
+                <p>Price: <?php echo htmlspecialchars($product['price']); ?></p>
+                <p>Stock: <?php echo htmlspecialchars($product['stock']); ?></p>
             </div>
-        <?php endforeach; ?>
-    <?php else : ?>
-        <p>Inga produkter att visa.</p>
-    <?php endif; ?>
+            <hr>
+    <?php
+        }
+    }
+    ?>
 </body>
 
 </html>
