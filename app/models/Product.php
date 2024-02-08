@@ -30,7 +30,29 @@ class Product
     }
     public function decreaseStock($productId, $quantity)
     {
+        // Förbered en SQL-fråga för att minska lagerantalet
         $sql = "UPDATE products SET stock = stock - ? WHERE id = ? AND stock >= ? ";
+
+        // Förbered ett uttalande
         $stmt = $this->db->getConnection()->prepare($sql);
+
+        // Kontrollera om förberedelsen lyckades
+        if ($stmt === false) {
+            throw new \Exception("Problem med att förbereda SQL-frågan");
+        }
+
+        // Bind parametrar (säkerställer att värdena är korrekt hanterade)
+        $stmt->bind_param("iii", $quantity, $productId, $quantity);
+
+        // Exekvera frågan
+        $stmt->execute();
+
+        // Kontrollera om uppdateringen var framgångsrik
+        if ($stmt->affected_rows === 0) {
+            throw new \Exception("Produkten kunde inte uppdateras, kanske pga otillräckligt lagerantal ");
+        }
+
+        // Stäng förberedelsen
+        $stmt->close();
     }
 }
