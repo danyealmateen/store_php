@@ -28,4 +28,9 @@ class Product
         }
         return $products;
     }
+    public function decreaseStock($productId, $quantity)
+    {
+        $sql = "UPDATE products SET stock = stock - ? WHERE id = ? AND stock >= ? ";
+        $stmt = $this->db->getConnection()->prepare($sql);
+    }
 }
