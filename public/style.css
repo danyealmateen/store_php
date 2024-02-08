@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Poller+One&display=swap");
+
+* {
+  color: white;
+  font-family: "Pollar One", sans-serif !important;
+  background-color: black;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product-div {
+  border: 3px solid gold;
+  border-radius: 20px;
+  margin: 10px;
+  width: 200px;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.cantina-header {
+  display: flex;
+  margin: auto;
+  width: 150px;
+}

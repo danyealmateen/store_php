@@ -19,19 +19,19 @@ class Product
         $products = [];
 
         if ($result->num_rows > 0) {
-            echo 'Fetch data successfull';
+            // echo 'Fetch data successfull';
             while ($row = $result->fetch_assoc()) {
                 $products[] = $row;
             }
         } else {
-            echo 'Could not fetch data';
+            // echo 'Could not fetch data';
         }
         return $products;
     }
     public function decreaseStock($productId, $quantity)
     {
         // Förbered en SQL-fråga för att minska lagerantalet
-        $sql = "UPDATE products SET stock = stock - ? WHERE id = ? AND stock >= ? ";
+        $sql = "UPDATE products SET stock = stock - ? WHERE id = ? AND stock >= ?";
 
         // Förbered ett uttalande
         $stmt = $this->db->getConnection()->prepare($sql);
