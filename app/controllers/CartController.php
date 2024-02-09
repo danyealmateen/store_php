@@ -15,9 +15,9 @@ class CartController
 
             $_SESSION['cart'][$productId] = isset($_SESSION['cart'][$productId]) ? $_SESSION['cart'][$productId] + $quantity : $quantity;
 
-            $_SESSION['feedback'] = 'Produkten har lagts till i kundvagnen.';
+            $_SESSION['feedback'] = 'Added to cart!';
         } catch (\Exception $e) {
-            $_SESSION['error'] = 'Tyvärr så är produkten är slut i lager.';
+            $_SESSION['error'] = 'Out of stock!';
         }
     }
 }

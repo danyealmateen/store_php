@@ -41,18 +41,18 @@
         unset($_SESSION['error']);
     }
 
+    //Rendera ut varukorgen
     if (isset($_SESSION['cart'])) {
         $totalQuantity = 0;
 
+        //Loopa igenom sessionens cart och skriv ut antalet
         foreach ($_SESSION['cart'] as $productId => $quantity) {
             $totalQuantity += $quantity;
         }
-
-        echo $totalQuantity;
+        echo
+        "<div class='basket-div'> 
+          <img class='cart-img' src='cart.png'>" . '<br>' . "Items in basket:" . $totalQuantity . "</div>";
     }
-
-
-
 
     ?>
     <div>
