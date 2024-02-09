@@ -9,15 +9,16 @@
 </head>
 
 <body class="body-main">
-
     <?php
 
     use App\Controllers\CartController;
 
+    //Startar sessionen
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
 
+    //Hämtar data från formuläret när add_to_cart knappen är klickad
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
         $productId = $_POST['product_id'];
         $quantity = $_POST['quantity'];
@@ -29,6 +30,7 @@
         exit;
     }
 
+    //Meddelanden feedback/error
     if (isset($_SESSION['feedback'])) {
         echo '<p>' . $_SESSION['feedback'] . '</p>';
         unset($_SESSION['feedback']);
@@ -38,6 +40,19 @@
         echo '<p>' . $_SESSION['error'] . '</p>';
         unset($_SESSION['error']);
     }
+
+    if (isset($_SESSION['cart'])) {
+        $totalQuantity = 0;
+
+        foreach ($_SESSION['cart'] as $productId => $quantity) {
+            $totalQuantity += $quantity;
+        }
+
+        echo $totalQuantity;
+    }
+
+
+
 
     ?>
     <div>
