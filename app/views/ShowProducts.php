@@ -11,11 +11,21 @@
 <body class="body-main">
 
     <?php
+
+    use App\Controllers\CartController;
+
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
 
-    // Visa feedback och felmeddelanden
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
+        $productId = $_POST['product_id'];
+        $quantity = $_POST['quantity'];
+        $cartcontroller = new CartController();
+        $cartcontroller->addToCart($productId, $quantity);
+    }
+
+
     if (isset($_SESSION['feedback'])) {
         echo '<p>' . $_SESSION['feedback'] . '</p>';
         unset($_SESSION['feedback']);
@@ -40,7 +50,7 @@
                     <p>Price: <?php echo htmlspecialchars($product['price']); ?>$</p>
                     <p>Stock: <?php echo htmlspecialchars($product['stock']); ?></p>
 
-                    <form action="CartControllerHandler.php" method="post">
+                    <form action="" method="post">
                         <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
                         <input type="hidden" name="quantity" value="1">
                         <button type="submit" name="add_to_cart">Add to cart</button>

@@ -12,7 +12,7 @@ class CartController
 
         try {
             $productModel->decreaseStock($productId, $quantity);
-
+            
             $_SESSION['cart'][$productId] = isset($_SESSION['cart'][$productId]) ? $_SESSION['cart'][$productId] + $quantity : $quantity;
 
             $_SESSION['feedback'] = 'Produkten har lagts till i kundvagnen.';
