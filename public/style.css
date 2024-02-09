@@ -28,10 +28,8 @@
   width: 150px;
 }
 
-.error {
-  color: red;
-}
-
-.feedback {
-  color: green;
+.product-header {
+  color: yellow;
+  text-align: center;
+  text-decoration: double underline;
 }

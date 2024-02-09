@@ -21,10 +21,13 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
         $productId = $_POST['product_id'];
         $quantity = $_POST['quantity'];
+
         $cartcontroller = new CartController();
         $cartcontroller->addToCart($productId, $quantity);
-    }
 
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit;
+    }
 
     if (isset($_SESSION['feedback'])) {
         echo '<p>' . $_SESSION['feedback'] . '</p>';
@@ -49,8 +52,7 @@
                     <h2><?php echo htmlspecialchars($product['name']); ?></h2>
                     <p>Price: <?php echo htmlspecialchars($product['price']); ?>$</p>
                     <p>Stock: <?php echo htmlspecialchars($product['stock']); ?></p>
-
-                    <form action="" method="post">
+                    <form action="" method="post" autocomplete="off">
                         <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
                         <input type="hidden" name="quantity" value="1">
                         <button type="submit" name="add_to_cart">Add to cart</button>

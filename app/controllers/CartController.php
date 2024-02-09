@@ -12,12 +12,12 @@ class CartController
 
         try {
             $productModel->decreaseStock($productId, $quantity);
-            
+
             $_SESSION['cart'][$productId] = isset($_SESSION['cart'][$productId]) ? $_SESSION['cart'][$productId] + $quantity : $quantity;
 
             $_SESSION['feedback'] = 'Produkten har lagts till i kundvagnen.';
         } catch (\Exception $e) {
-            $_SESSION['error'] = 'Kunde inte lägga till produkten i kundvagnen';
+            $_SESSION['error'] = 'Tyvärr så är produkten är slut i lager.';
         }
     }
 }
