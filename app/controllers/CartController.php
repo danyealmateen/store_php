@@ -18,6 +18,8 @@ class CartController
                 session_start();
             }
 
+            $_SESSION['cart'][$productId] = isset($_SESSION['cart'][$productId]) ? $_SESSION['cart'][$productId] + $quantity : $quantity;
+
             //Logik för att lägga till produkten i kundkorgen.
         } catch (\Exception $e) {
             //Hantera fel
