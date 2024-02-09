@@ -9,6 +9,24 @@
 </head>
 
 <body class="body-main">
+
+    <?php
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    // Visa feedback och felmeddelanden
+    if (isset($_SESSION['feedback'])) {
+        echo '<p>' . $_SESSION['feedback'] . '</p>';
+        unset($_SESSION['feedback']);
+    }
+
+    if (isset($_SESSION['error'])) {
+        echo '<p>' . $_SESSION['error'] . '</p>';
+        unset($_SESSION['error']);
+    }
+
+    ?>
     <div>
         <img class="cantina-header" src="avatar.jpg" alt="cantina-header">
         <img class="cantina-header" src="cantina.png" alt="cantina-header">
@@ -22,16 +40,15 @@
                     <p>Price: <?php echo htmlspecialchars($product['price']); ?>$</p>
                     <p>Stock: <?php echo htmlspecialchars($product['stock']); ?></p>
 
-                    <form action="/app/controllers/CartController.php" method="post">
+                    <form action="CartControllerHandler.php" method="post">
                         <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
                         <input type="hidden" name="quantity" value="1">
-                        <button type="submit">Add to cart</button>
+                        <button type="submit" name="add_to_cart">Add to cart</button>
                     </form>
                 </div>
         <?php }
         } ?>
     </div>
 </body>
-
 
 </html>

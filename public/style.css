@@ -27,3 +27,11 @@
   margin: auto;
   width: 150px;
 }
+
+.error {
+  color: red;
+}
+
+.feedback {
+  color: green;
+}
