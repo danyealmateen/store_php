@@ -21,7 +21,12 @@
                     <h2><?php echo htmlspecialchars($product['name']); ?></h2>
                     <p>Price: <?php echo htmlspecialchars($product['price']); ?>$</p>
                     <p>Stock: <?php echo htmlspecialchars($product['stock']); ?></p>
-                    <button type="submit">Add to cart</button>
+
+                    <form action="/app/controllers/CartController.php" method="post">
+                        <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit">Add to cart</button>
+                    </form>
                 </div>
         <?php }
         } ?>
