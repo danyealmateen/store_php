@@ -15,3 +15,6 @@ class Users
         return $stmt->execute([$username, $hashedPassword, $email]);
     }
 }
+
+$users = new Users($db);
+$createNewUser = $users->createUser($inputUsername, $inputPassword, $inputEmail);

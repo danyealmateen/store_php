@@ -37,14 +37,9 @@
 .cart {
   background-color: orange;
   border: 4px solid yellow;
-  /* font-size: 30px; */
   width: 50px;
 }
 
 .cart-img {
   width: 100px;
 }
-
-/* .basket-div {
-  float: right;
-} */

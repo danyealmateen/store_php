@@ -66,7 +66,7 @@
                     <p>Stock: <?php echo htmlspecialchars($product['stock']); ?></p>
 
                     <!-- POST formulär -->
-                    <form action="" method="post" autocomplete="off">
+                    <form action="" method="post">
                         <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
                         <input type="hidden" name="quantity" value="1">
                         <button type="submit" name="add_to_cart">Add to cart</button>
@@ -74,6 +74,16 @@
                 </div>
         <?php }
         } ?>
+        <!-- SKAPA ANVÄNDARE -->
+        <h1>create user</h1>
+        <form action="" method="post">
+            <input type="text" placeholder="username" name="username">
+            <br>
+            <input type="text" placeholder="email">
+            <br>
+            <input type="password" placeholder="password">
+            <button type="submit">skapa anv</button>
+        </form>
     </div>
 </body>
 
