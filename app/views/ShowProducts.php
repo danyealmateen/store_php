@@ -79,10 +79,10 @@
         <form action="" method="post">
             <input type="text" placeholder="username" name="username">
             <br>
-            <input type="text" placeholder="email">
+            <input type="text" placeholder="email" name="email">
             <br>
-            <input type="password" placeholder="password">
-            <button type="submit">skapa anv</button>
+            <input type="password" placeholder="password" name="password">
+            <button type="submit" name="create_user">skapa anv</button>
         </form>
     </div>
 </body>

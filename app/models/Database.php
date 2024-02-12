@@ -20,7 +20,7 @@ class Database
         if ($this->connection->connect_error) {
             die("Anslutningsfel: " . $this->connection->connect_error);
         } else {
-            // echo 'Ansluten till databasen!';
+            echo 'Ansluten till databasen!';
         }
     }
 
