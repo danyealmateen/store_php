@@ -51,22 +51,21 @@
         }
         echo
         "<div class='basket-div'> 
-          <img class='cart-img' src='cart.png'>" . '<br>' . "Items in basket:" . $totalQuantity . "</div>";
+          " . '<br>' . "Items in basket:" . $totalQuantity . "</div>";
     }
-
     ?>
-    <div>
-        <img class="cantina-header" src="avatar.jpg" alt="cantina-header">
-        <img class="cantina-header" src="cantina.png" alt="cantina-header">
-    </div>
     <hr>
     <div class="product-container">
         <?php if (isset($products) && !empty($products)) {
             foreach ($products as $product) { ?>
                 <div class="product-div">
+
+                    <!-- Data rendering -->
                     <h2><?php echo htmlspecialchars($product['name']); ?></h2>
                     <p>Price: <?php echo htmlspecialchars($product['price']); ?>$</p>
                     <p>Stock: <?php echo htmlspecialchars($product['stock']); ?></p>
+
+                    <!-- POST formulär -->
                     <form action="" method="post" autocomplete="off">
                         <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
                         <input type="hidden" name="quantity" value="1">

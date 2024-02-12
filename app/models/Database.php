@@ -7,7 +7,7 @@ class Database
     private $host = 'localhost';
     private $user = 'root';
     private $pass = '';
-    private $dbname = 'store_products';
+    private $dbname = 'store';
 
     private $connection;
 
